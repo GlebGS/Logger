@@ -8,23 +8,23 @@ void Logger::LogError(Loggs level, const QString &message)
 {
     file= new QFile("LogError.txt");
     file->open(QIODevice::Append);
-    data time;
+    data timeError;
 
     if(!file->isOpen())
     {
         qDebug() << "ERROR: File is not open!";
     }
 
-    time.time = QTime::currentTime();
-    time.date = QDate::currentDate();
+    timeError.time = QTime::currentTime();
+    timeError.date = QDate::currentDate();
 
     stream.setDevice(file);
-    stream << "[" << time.time.toString("hh:mm:ss") << " | "
-           << time.date.toString("dd.MM.yyyy") << "]"
+    stream << "[" << timeError.time.toString("hh:mm:ss") << " | "
+           << timeError.date.toString("dd.MM.yyyy") << "]"
            << "[" << LevelToStringLogs(level) << "] " << message << "\n";
 
-    cout << "[" << time.time.toString("hh:mm:ss").toStdString() << " | "
-         << time.date.toString("dd.MM.yyyy").toStdString() << "]"
+    cout << "[" << timeError.time.toString("hh:mm:ss").toStdString() << " | "
+         << timeError.date.toString("dd.MM.yyyy").toStdString() << "]"
          << "[" << LevelToStringLogs(level).toStdString() << "] "
          << message.toStdString() << "\n";
 
@@ -36,23 +36,23 @@ void Logger::Logs(Loggs level, const QString &message)
     file= new QFile("Logs.txt");
     file->open(QIODevice::Append);
 
-    data time;
+    data timeLog;
 
     if(!file->isOpen())
     {
         qDebug() << "ERROR: File is not open!";
     }
 
-    time.time = QTime::currentTime();
-    time.date = QDate::currentDate();
+    timeLog.time = QTime::currentTime();
+    timeLog.date = QDate::currentDate();
 
     stream.setDevice(file);
-    stream << "[" << time.time.toString("hh:mm:ss") << " | "
-           << time.date.toString("dd.MM.yyyy") << "]"
+    stream << "[" << timeLog.time.toString("hh:mm:ss") << " | "
+           << timeLog.date.toString("dd.MM.yyyy") << "]"
            << "[" << LevelToStringLogs(level) << "] " << message << "\n";
 
-    cout << "[" << time.time.toString("hh:mm:ss").toStdString() << " | "
-         << time.date.toString("dd.MM.yyyy").toStdString() << "]"
+    cout << "[" << timeLog.time.toString("hh:mm:ss").toStdString() << " | "
+         << timeLog.date.toString("dd.MM.yyyy").toStdString() << "]"
          << "[" << LevelToStringLogs(level).toStdString() << "] "
          << message.toStdString() << "\n";
 
